@@ -9,6 +9,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  http: ^0.13.5
+  intl: ^0.17.0
+  geolocator: ^9.0.2
+  geocoding: ^2.1.0
+  flutter_map: ^4.0.0
+  latlong2: ^0.8.1
+  carousel_slider: ^4.2.1
+  cached_network_image: ^3.2.3
 
 dev_dependencies:
   flutter_test:

@@ -31,7 +31,8 @@ class _ForecastpageState extends State<Forecastpage> {
       List<Location> locations = await locationFromAddress(widget.cityName);
       if (locations.isNotEmpty) {
         setState(() {
-          _cityLocation = LatLng(locations.first.latitude, locations.first.longitude);
+          _cityLocation =
+              LatLng(locations.first.latitude, locations.first.longitude);
         });
       } else {
         print('No location found for ${widget.cityName}');
@@ -43,7 +44,8 @@ class _ForecastpageState extends State<Forecastpage> {
 
   Future<void> _fetchForecastData() async {
     final apiKey = '2d5177a3b6eb5459f01121f61e1cb7d2';
-    final url = 'https://api.openweathermap.org/data/2.5/forecast?q=${widget.cityName}&appid=$apiKey&units=metric';
+    final url =
+        'https://api.openweathermap.org/data/2.5/forecast?q=${widget.cityName}&appid=$apiKey&units=metric';
 
     try {
       final response = await http.get(Uri.parse(url));
@@ -56,7 +58,8 @@ class _ForecastpageState extends State<Forecastpage> {
         Map<String, List<double>> dailyTemps = {};
 
         for (var forecast in forecastList) {
-          final date = DateTime.fromMillisecondsSinceEpoch(forecast['dt'] * 1000);
+          final date =
+              DateTime.fromMillisecondsSinceEpoch(forecast['dt'] * 1000);
           final dateString = DateFormat('yyyy-MM-dd').format(date);
           final temperature = forecast['main']['temp'].toDouble();
 
@@ -107,23 +110,26 @@ class _ForecastpageState extends State<Forecastpage> {
               child: Column(
                 children: [
                   const SizedBox(height: 20),
-                  Container(
+                  SizedBox(
                     height: 300,
                     child: _dailyForecast.isEmpty
-                        ? const Center(child: CircularProgressIndicator(color: Colors.white))
+                        ? const Center(
+                            child:
+                                CircularProgressIndicator(color: Colors.white))
                         : ListView.builder(
-                      itemCount: _dailyForecast.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        final forecast = _dailyForecast[index];
-                        return ForecastCard(forecast: forecast);
-                      },
-                    ),
+                            itemCount: _dailyForecast.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              final forecast = _dailyForecast[index];
+                              return ForecastCard(forecast: forecast);
+                            },
+                          ),
                   ),
                   const SizedBox(height: 20),
                   if (_cityLocation != null)
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 20.0),
                       child: Container(
                         height: 300,
                         width: MediaQuery.of(context).size.width,
@@ -134,7 +140,7 @@ class _ForecastpageState extends State<Forecastpage> {
                               color: Colors.black.withOpacity(0.1),
                               spreadRadius: 2,
                               blurRadius: 5,
-                              offset: Offset(0, 3),
+                              offset: const Offset(0, 3),
                             ),
                           ],
                         ),
@@ -142,21 +148,25 @@ class _ForecastpageState extends State<Forecastpage> {
                           borderRadius: BorderRadius.circular(20),
                           child: FlutterMap(
                             options: MapOptions(
-                              initialCenter: _cityLocation!,
-                              initialZoom: 11,
+                              center: _cityLocation,
+                              zoom: 11,
                             ),
                             children: [
                               TileLayer(
-                                urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                                urlTemplate:
+                                    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                                 subdomains: const ['a', 'b', 'c'],
                               ),
                               MarkerLayer(
                                 markers: [
                                   Marker(
+                                    point: _cityLocation!,
                                     width: 40.0,
                                     height: 40.0,
-                                    point: _cityLocation!,
-                                    child: const Icon(Icons.location_on, color: Colors.red, size: 40),
+                                    builder: (ctx) => const Icon(
+                                        Icons.location_on,
+                                        color: Colors.red,
+                                        size: 40),
                                   ),
                                 ],
                               ),
@@ -166,7 +176,9 @@ class _ForecastpageState extends State<Forecastpage> {
                       ),
                     )
                   else
-                    const Center(child: Text('Map loading...', style: TextStyle(color: Colors.white))),
+                    const Center(
+                        child: Text('Map loading...',
+                            style: TextStyle(color: Colors.white))),
                 ],
               ),
             ),
@@ -207,7 +219,8 @@ class ForecastCard extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             '${forecast.temperature.round()}°C',
-            style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+                color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           Text(
