@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:weathertechtita/landing_page.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const MyWeatherApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyWeatherApp extends StatelessWidget {
+  const MyWeatherApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('sup World!'),
-        ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      home: const LandingPage(),
     );
   }
 }
