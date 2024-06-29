@@ -25,7 +25,7 @@ class _LocationImageCarouselState extends State<LocationImageCarousel> {
 
   Future<void> fetchImages(String cityName) async {
     const apiKey =
-        'YjNTd2myC1HcijUpiCJ-WisnmowARob4NMvteVB7aHQ'; // Replace with your actual Unsplash API key
+        'YjNTd2myC1HcijUpiCJ-WisnmowARob4NMvteVB7aHQ'; 
     final url =
         'https://api.unsplash.com/search/photos?query=$cityName&client_id=$apiKey&per_page=5';
 
