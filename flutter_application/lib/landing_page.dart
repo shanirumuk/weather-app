@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:acme_weatherapp/homescreen.dart';
-import 'package:acme_weatherapp/theme/app_colors.dart';
+import 'package:weathertechtita/homescreen.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -9,16 +8,7 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              AppColors.gradientStart,
-              AppColors.gradientEnd,
-            ],
-          ),
-        ),
+        color: const Color(0xFF1F1D23),
         child: SafeArea(
           child: Center(
             child: Column(
@@ -27,11 +17,11 @@ class LandingPage extends StatelessWidget {
                 Semantics(
                   label: 'App title',
                   child: Text(
-                    "ACME Weather App",
+                    "Tech Titans Weather App",
                     style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -41,8 +31,8 @@ class LandingPage extends StatelessWidget {
                   child: Text(
                     "Get real-time weather updates",
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: Colors.white,
-                        ),
+                      color: Colors.white,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                 ),
