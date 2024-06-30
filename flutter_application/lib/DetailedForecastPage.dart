@@ -63,8 +63,8 @@ class _DetailedForecastPageState extends State<DetailedForecastPage> {
     return Scaffold(
       backgroundColor: const Color(0xFF1F1D23),
       appBar: AppBar(
-        title: Text('${widget.cityName} - Hourly Forecast'),
-        backgroundColor: Colors.transparent,
+        title: Text('${widget.cityName} - 3 Hourly Forecasts'),
+        backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: _isLoading
@@ -72,14 +72,14 @@ class _DetailedForecastPageState extends State<DetailedForecastPage> {
           : SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 100),
+            const SizedBox(height: 70),
             Text(
-              'Hourly Forecast',
+              'Weather Forecasts for Every 3 Hours',
               style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 40),
             Container(
-              height: 120,
+              height: 400,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: _hourlyForecast.length,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:acme_weatherapp/landing_page.dart';
-import 'package:acme_weatherapp/theme/app_colors.dart';
+import 'package:weathertechtita/landing_page.dart';
+import 'package:weathertechtita/theme/app_colors.dart';
 
 void main() {
   runApp(const MyWeatherApp());
